@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { navItems } from "../../data/landingContent";
 import { AppLink } from "../ui/AppLink";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const headerRef = useRef(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -16,8 +18,32 @@ export function Header() {
     setIsOpen(false);
   }, [location.pathname, location.hash]);
 
+  useEffect(() => {
+    if (!isOpen) return undefined;
+
+    const handlePointerDown = (event) => {
+      if (!headerRef.current?.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
+
   return (
-    <header className="site-header">
+    <header ref={headerRef} className="site-header">
       <nav className="navbar" aria-label="Điều hướng chính">
         <Link className="brand" to="/#top" aria-label="Về trang chủ Z-Pantry">
           <span className="brand-mark" />
@@ -31,9 +57,7 @@ export function Header() {
           aria-expanded={isOpen}
           onClick={() => setIsOpen((current) => !current)}
         >
-          <span />
-          <span />
-          <span />
+          {isOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
         </button>
 
         <div className="nav-links">
@@ -42,8 +66,8 @@ export function Header() {
               {item.label}
             </AppLink>
           ))}
-          <AppLink className="nav-cta" to="/download">
-            Tải ứng dụng
+          <AppLink className="nav-cta" to="/login">
+            Bắt đầu
           </AppLink>
         </div>
       </nav>

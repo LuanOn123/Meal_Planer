@@ -11,7 +11,7 @@ export default {
         pantryBeige: "#F6E7D8"
       },
       fontFamily: {
-        heading: ["Manrope", "Be Vietnam Pro", "system-ui", "sans-serif"],
+        heading: ["Be Vietnam Pro", "system-ui", "sans-serif"],
         body: ["Be Vietnam Pro", "system-ui", "sans-serif"]
       },
       boxShadow: {

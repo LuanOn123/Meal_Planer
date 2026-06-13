@@ -93,14 +93,11 @@ export function useLandingEffects(effectKey) {
       if (item.classList.contains("is-visible")) return;
 
       item.classList.add("is-visible");
-      item.style.opacity = "1";
-      item.style.filter = "none";
-      item.style.clipPath = "inset(0 0 0 0 round 0)";
       const delay = Number(item.dataset.revealDelay || 0);
       const timer = window.setTimeout(() => {
         item.style.transitionDelay = "";
         item.style.transition =
-          "transform 0.46s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.46s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.46s ease";
+          "transform 0.46s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.46s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.46s ease, opacity 0.46s ease";
         delete item.dataset.revealDelay;
       }, delay + 960);
       revealTimers.push(timer);
@@ -132,7 +129,10 @@ export function useLandingEffects(effectKey) {
     };
 
     revealItems.forEach((item, index) => {
-      const delay = Math.min(index % 6, 4) * 70;
+      const staggerParent = item.closest(".reveal-stagger, .feature-grid, .problem-cards, .timeline, .testimonial-grid, .download-card-grid");
+      const groupItems = staggerParent ? Array.from(staggerParent.querySelectorAll(".reveal")) : [];
+      const groupIndex = groupItems.indexOf(item);
+      const delay = groupIndex >= 0 ? Math.min(groupIndex, 5) * 110 : Math.min(index % 6, 4) * 70;
       item.dataset.revealDelay = `${delay}`;
       item.style.transitionDelay = `${delay}ms`;
       revealObserver.observe(item);
@@ -159,7 +159,7 @@ export function useLandingEffects(effectKey) {
 
       const phone = heroStage.querySelector(".phone-mockup");
       if (phone) {
-        phone.style.transform = `translate(-50%, -50%) rotateX(${8 - y * 8}deg) rotateY(${-12 + x * 10}deg) rotateZ(4deg)`;
+        phone.style.transform = `translate(-50%, -50%) scale(var(--phone-scale, 1)) rotateX(${8 - y * 8}deg) rotateY(${-12 + x * 10}deg) rotateZ(4deg)`;
       }
     };
 

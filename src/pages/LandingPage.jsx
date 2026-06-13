@@ -15,7 +15,7 @@ export function LandingPage() {
   useLandingEffects("landing");
 
   return (
-    <main>
+    <main className="landing-page">
       <HeroSection />
       <ProblemSection />
       <SolutionSection />

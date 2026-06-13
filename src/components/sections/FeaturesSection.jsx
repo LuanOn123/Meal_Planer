@@ -8,7 +8,7 @@ export function FeaturesSection() {
           <span className="eyebrow">Dành cho căn bếp thật</span>
           <h2 id="features-title">Mọi thứ bạn cần để lên kế hoạch bữa ăn tốt hơn</h2>
         </div>
-        <div className="feature-grid">
+        <div className="feature-grid reveal-stagger">
           {features.map((feature) => (
             <article className="feature-card tilt-card reveal" key={feature.title}>
               <img src={feature.image} alt={feature.alt} />
