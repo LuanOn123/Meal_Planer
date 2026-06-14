@@ -13,7 +13,7 @@ export function RegisterPage() {
     name: "",
     email: "",
     password: "",
-    confirm: "",
+    confirm: ""
   });
 
   const [errors, setErrors] = useState({});
@@ -36,7 +36,6 @@ export function RegisterPage() {
     if (form.confirm !== form.password) next.confirm = "Mật khẩu nhập lại chưa khớp.";
 
     setErrors(next);
-
     if (Object.keys(next).length) return;
 
     try {
@@ -54,9 +53,7 @@ export function RegisterPage() {
       subtitle="Tạo tài khoản để lưu nguyên liệu, sở thích ăn uống và lịch bữa ăn của bạn."
     >
       <div className="grid gap-3">
-        <div className="h-10 w-full overflow-hidden rounded-full border border-slate-200">
-          <GoogleSignInButton label="Đăng ký với Google" />
-        </div>
+        <GoogleSignInButton label="Đăng ký với Google" />
 
         <div className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400">
           <span className="h-px flex-1 bg-slate-200" />
@@ -65,7 +62,7 @@ export function RegisterPage() {
         </div>
       </div>
 
-      <form onSubmit={submit} className="mt-4 grid gap-3">
+      <form onSubmit={submit} className="mt-3 grid gap-3">
         <Field label="Họ và tên" error={errors.name}>
           <input
             className={`${inputClass} h-10 rounded-xl text-sm`}
@@ -120,7 +117,7 @@ export function RegisterPage() {
         </button>
       </form>
 
-      <p className="mt-4 text-sm text-slate-600">
+      <p className="mt-3 text-sm text-slate-600">
         Đã có tài khoản?{" "}
         <Link className="font-black text-orange-600" to="/login">
           Đăng nhập

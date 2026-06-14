@@ -25,7 +25,7 @@ export function GoogleSignInButton({ label = "Tiếp tục với Google" }) {
       <button
         type="button"
         disabled
-        className="flex h-12 w-full items-center justify-center rounded-2xl border border-orange-100 bg-slate-50 px-4 text-sm font-black text-slate-400"
+        className="flex h-10 w-full items-center justify-center rounded-full border border-orange-100 bg-slate-50 px-4 text-sm font-black text-slate-400"
         title="Cần cấu hình VITE_GOOGLE_CLIENT_ID trong .env"
       >
         {label}
@@ -34,16 +34,16 @@ export function GoogleSignInButton({ label = "Tiếp tục với Google" }) {
   }
 
   return (
-    <div className="google-login-wrap">
+    <div className="google-login-wrap" aria-label={label}>
       <GoogleLogin
         onSuccess={handleSuccess}
         onError={() => toast.show("Đăng nhập Google thất bại.", "error")}
         theme="outline"
         shape="pill"
-        size="large"
-        text="continue_with"
+        size="medium"
+        text="signin_with"
         locale="vi"
-        width="100%"
+        width="400"
       />
     </div>
   );

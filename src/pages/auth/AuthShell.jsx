@@ -26,25 +26,28 @@ const foodImages = [
 
 export function AuthShell({ title, subtitle, children }) {
   return (
-   <main className="auth-page min-h-screen bg-[radial-gradient(circle_at_14%_10%,#fed7aa,transparent_30%),linear-gradient(135deg,#fff7ed,#ffffff_48%,#f0fdf4)] px-4 py-4">
-      <Link to="/" className="mx-auto mb-6 flex w-fit items-center gap-3 font-heading text-lg font-black">
-        <span className="grid h-10 w-10 place-items-center rounded-2xl bg-orange-500 text-white">
-          <ChefHat size={21} />
+    <main className="auth-page relative grid min-h-screen overflow-hidden px-4 py-3">
+      <div className="auth-page-bg" aria-hidden="true" />
+
+      <Link to="/" className="relative z-10 mx-auto mb-3 flex w-fit items-center gap-3 font-heading text-base font-black">
+        <span className="grid h-9 w-9 place-items-center rounded-2xl bg-orange-500 text-white">
+          <ChefHat size={19} />
         </span>
         Z-Pantry
-      </Link> 
-      <section className="auth-card mx-auto grid max-w-[820px] overflow-hidden rounded-[24px] border border-white/70 bg-white shadow-xl shadow-orange-300 lg:grid-cols-[0.78fr_1fr]">
-        <aside className="auth-visual hidden bg-[#24170f] p-6 text-white lg:block">
-          <div className="flex h-full flex-col justify-between rounded-[22px] border border-white/12 bg-[linear-gradient(145deg,rgba(249,115,22,.24),rgba(22,163,74,.18))] p-6">
+      </Link>
+
+      <section className="auth-card relative z-10 mx-auto grid w-full max-w-[900px] overflow-hidden rounded-[24px] border border-white/75 bg-white/88 shadow-xl shadow-orange-200/70 backdrop-blur-xl lg:grid-cols-[0.82fr_1fr]">
+        <aside className="auth-visual hidden bg-[#24170f] p-4 text-white lg:block">
+          <div className="flex h-full flex-col justify-between rounded-[20px] border border-white/12 bg-[linear-gradient(145deg,rgba(249,115,22,.24),rgba(22,163,74,.18))] p-5">
             <div>
-              <span className="inline-flex items-center gap-2 rounded-full bg-white/14 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-orange-100">
-                <Sparkles size={14} />
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/14 px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.16em] text-orange-100">
+                <Sparkles size={13} />
                 Bếp Việt thông minh
               </span>
-              <h1 className="mt-4 max-w-md font-heading text-[26px] font-black leading-tight">
+              <h1 className="mt-4 max-w-md font-heading text-[24px] font-black leading-tight">
                 Lên thực đơn từ nguyên liệu có sẵn.
               </h1>
-              <p className="mt-3 max-w-sm text-xs leading-5 text-white/72">
+              <p className="mt-2 max-w-sm text-xs leading-5 text-white/72">
                 Gợi ý món ăn gần gũi, quản lý tủ bếp rõ ràng và giảm lãng phí mỗi ngày.
               </p>
             </div>
@@ -58,21 +61,22 @@ export function AuthShell({ title, subtitle, children }) {
               ))}
             </div>
 
-            <div className="grid grid-cols-3 gap-3 text-center text-xs font-black">
-              <span className="rounded-2xl bg-white/12 p-3 backdrop-blur">Ít lãng phí</span>
-              <span className="rounded-2xl bg-white/12 p-3 backdrop-blur">Nấu nhanh</span>
-              <span className="rounded-2xl bg-white/12 p-3 backdrop-blur">Hợp vị</span>
+            <div className="grid grid-cols-3 gap-2 text-center text-[11px] font-black">
+              <span className="rounded-2xl bg-white/12 px-2 py-2 backdrop-blur">Ít lãng phí</span>
+              <span className="rounded-2xl bg-white/12 px-2 py-2 backdrop-blur">Nấu nhanh</span>
+              <span className="rounded-2xl bg-white/12 px-2 py-2 backdrop-blur">Hợp vị</span>
             </div>
           </div>
         </aside>
 
-        <div className="auth-form-panel p-5 sm:p-6">
-          <p className="text-xs font-black uppercase tracking-[0.18em] text-orange-500">Chào mừng đến Z-Pantry</p>
-          <h2 className="mt-2 font-heading text-2xl font-black leading-tight text-slate-950 sm:text-[28px]">
-  {title}
-</h2>
-          <p className="mt-2 max-w-xl text-sm leading-5 text-slate-600">{subtitle}</p>
-          <div className="mt-4">{children}</div>
+        <div className="auth-form-panel relative overflow-hidden p-5 sm:p-6">
+          <div className="auth-form-bg" aria-hidden="true" />
+          <div className="relative z-10">
+            <p className="text-[11px] font-black uppercase tracking-[0.17em] text-orange-500">Chào mừng đến Z-Pantry</p>
+            <h2 className="mt-2 font-heading text-2xl font-black leading-tight text-slate-950 sm:text-[28px]">{title}</h2>
+            <p className="mt-2 max-w-xl text-sm leading-5 text-slate-600">{subtitle}</p>
+            <div className="mt-4">{children}</div>
+          </div>
         </div>
       </section>
     </main>

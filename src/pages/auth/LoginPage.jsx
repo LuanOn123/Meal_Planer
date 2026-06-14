@@ -28,7 +28,6 @@ export function LoginPage() {
     else if (form.password.length < 6) next.password = "Mật khẩu cần ít nhất 6 ký tự.";
 
     setErrors(next);
-
     if (Object.keys(next).length) return;
 
     setLoading(true);
@@ -50,9 +49,7 @@ export function LoginPage() {
       subtitle="Quản lý nguyên liệu, gợi ý món ăn và lập kế hoạch bữa ăn trong một không gian gọn gàng."
     >
       <div className="grid gap-3">
-        <div className="h-10 w-full overflow-hidden rounded-full border border-slate-200">
-          <GoogleSignInButton />
-        </div>
+        <GoogleSignInButton />
 
         <div className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400">
           <span className="h-px flex-1 bg-slate-200" />
@@ -61,7 +58,7 @@ export function LoginPage() {
         </div>
       </div>
 
-      <form onSubmit={submit} className="mt-4 grid gap-3">
+      <form onSubmit={submit} className="mt-3 grid gap-3">
         <Field label="Email" error={errors.email}>
           <input
             className={`${inputClass} h-10 rounded-xl text-sm`}
@@ -110,14 +107,14 @@ export function LoginPage() {
         </button>
       </form>
 
-      <p className="mt-4 text-sm text-slate-600">
+      <p className="mt-3 text-sm text-slate-600">
         Chưa có tài khoản?{" "}
         <Link className="font-black text-orange-600" to="/register">
           Đăng ký ngay
         </Link>
       </p>
 
-      <div className="mt-4 rounded-xl bg-orange-50 p-3 text-xs leading-5 text-slate-700">
+      <div className="auth-demo-accounts mt-3 rounded-xl bg-orange-50/90 p-3 text-xs leading-5 text-slate-700">
         <p>
           <strong>Admin:</strong> admin@zpantry.com / 123456
         </p>
