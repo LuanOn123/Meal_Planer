@@ -53,7 +53,7 @@ export function RegisterPage() {
       subtitle="Tạo tài khoản để lưu nguyên liệu, sở thích ăn uống và lịch bữa ăn của bạn."
     >
       <div className="grid gap-3">
-        <GoogleSignInButton label="Đăng ký với Google" />
+        <GoogleSignInButton  label="Đăng ký với Google" googleText="signup_with" />
 
         <div className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-400">
           <span className="h-px flex-1 bg-slate-200" />

@@ -362,8 +362,25 @@
     font-size: 1.42rem;
   }
 
+  .google-login-wrap {
+    justify-content: center;
+    min-height: 38px;
+  }
+
+  .google-login-wrap > div,
+  .google-login-wrap iframe {
+    width: min(320px, 100%) !important;
+  }
+
   .auth-demo-accounts {
     display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .google-login-wrap > div,
+  .google-login-wrap iframe {
+    width: min(300px, 100%) !important;
   }
 }
 
